@@ -6,6 +6,7 @@ import org.movies.song.pkg.pojo.Song;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,15 +39,14 @@ public class MainController {
 		return "movies";
 	}
 	
+	@GetMapping("movies/{id}")
 	public String getMovieDetails(@PathVariable("id") int id, Model model) {
-		
-
-
+	
 		model.addAttribute("list", model);
-
 		
-		return "details" + id;
+		return "details";
 	}
+	
 	
 	@GetMapping("/songs")
 	public String getSongs(Model model)  {
@@ -63,12 +63,12 @@ public class MainController {
 		return "songs";
 	}
 	
-	public String getSongDetails(@PathVariable("id") int id, Model model) {
-		
+	
+	@GetMapping("/songs/{id}")
+	public String getSongDetails(@PathVariable("id") int id, Model model) {		
 
 		model.addAttribute("list", model);
 
-
-		return "details" + id;
+		return "details";
 	}
 }

@@ -1,29 +1,55 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<body>
-		<header class="row d-flex flex-row" th:fragment="header(author)">
-			<h1>Best of <span class="text-primary mark">[[${author}]]</span></h1>
-			<ul class=" d-flex flex-row py-5">
+
+
+<!------------------- Head ----------------------------->
+
+<head th:fragment="head(title)">
+	<meta charset="ISO-8859-1">
+	<title th:text="${title}"></title>
+	<link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+</head>
+
+<!------------------- Header Nav ----------------------------->
+
+<header class="container-fluid bg-dark" th:fragment="header(author)">
+	<div class="row align-items-center justify-content-between py-3 px-1 text-light ">
+		
+		<h1 class="col">Best of 
+			<span class="text-dark mark fw-bold">[[${author}]]</span>
+		</h1>
+		
+		<nav class="col-8">
+			<ul class=" d-flex align-items-center justify-content-between p-2 list-unstyled">
 				<li>
-					<a class="col-4" th:href="@{/}">Home</a>
+					<a class="col-4 h5 text-decoration-none text-light" 
+					   th:href="@{/}">Home</a>
 				</li>	
 				<li>
-					<a class="col-2" th:href="@{/movies}">Movies</a>
+					<a class="col-2 h5 text-decoration-none text-light" 
+					   th:href="@{/movies}">Movies</a>
 				</li>
 				<li>
-					<a class="col-2" th:href="@{/songs}"> Songs</a>
+					<a class="col-2 h5 text-decoration-none text-light"
+					   th:href="@{/songs}"> Songs</a>
 				</li>
 			</ul>
-		</header>
-		
-		
-		<ul th:fragment="ulList(list, route)">
-			<li th:each="movie : ${list}"
-				th:object="${movie}">
-				<a th:text="*{name} + ' | ' + *{id}" 
-			 	   th:href="'/' + ${route} + '/' + *{id}"></a>
-			</li>
-		</ul>
-	</body>
-</html>
+		</nav>
 	
+	</div>
+</header>
+
+<!------------------- Lista ----------------------------->
+
+<ul th:fragment="ulList(list, route)"
+	class="list-group list-unstyled p-3 my-1">
+	
+	<li th:each="obj : ${list}"
+		th:object="${obj}"
+		class="list-group-item">
+		
+		<a th:text="'Nome: ' + *{name} +  ' || Id: ' + *{id}" 
+	 	    th:href="@{'/' + ${route} + '/' + *{id}}"></a>
+	</li>
+</ul>
+
+<!--------------------------------------------------------->
