@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<th:block th:Replace="frags :: head('Spring ' + ${model})"></th:block>
+
+	<body class="bg-secondary">
+		
+		<th:block th:replace="frags :: header('Valerio')"></th:block>
+		
+		<main class="container-fluid">
+			
+			<div class="row text-center card m-auto text-light bg-dark w-50 my-5 border-light">
+			
+				<h1 class="py-1 fw-bold">Best [[${model}]]</h1>					
+			
+				<th:block th:replace="frags :: ulList(${obj}, ${model})"></th:block>
+			
+			</div>
+		</main>
+		
+		<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>	
+	</body>
+</html>

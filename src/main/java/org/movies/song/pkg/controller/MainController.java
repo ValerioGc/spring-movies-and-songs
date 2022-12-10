@@ -34,12 +34,13 @@ public class MainController {
 		movies.add(new Movie(3, "Movie 4"));
 		movies.add(new Movie(4, "Movie 5"));
 		
-		model.addAttribute("movies", movies);
+		model.addAttribute("obj", movies);
+		model.addAttribute("model", "movies");
 
-		return "movies";
+		return "movies-songs";
 	}
 	
-	@GetMapping("movies/{id}")
+	@GetMapping("/movies/{id}")
 	public String getMovieDetails(@PathVariable("id") int id, Model model) {
 	
 		model.addAttribute("list", model);
@@ -58,9 +59,10 @@ public class MainController {
 		songs.add(new Song(3, "Song 3"));
 		songs.add(new Song(4, "Song 4"));
 		
-		model.addAttribute("songs", songs);
+		model.addAttribute("obj", songs);
+		model.addAttribute("model", "songs");
 		
-		return "songs";
+		return "movies-songs";
 	}
 	
 	
